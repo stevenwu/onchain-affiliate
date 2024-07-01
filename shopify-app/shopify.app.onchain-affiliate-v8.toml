@@ -3,7 +3,7 @@
 client_id = "61edb1df378890727072fc8bec4664d3"
 name = "onchain-affiliate-v8"
 handle = "onchain-affiliate-v8"
-application_url = "https://connected-partner-sight-spelling.trycloudflare.com"
+application_url = "https://tractor-era-johnston-rugby.trycloudflare.com"
 embedded = true
 
 [build]
@@ -13,13 +13,13 @@ include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_markets,read_metaobjects,read_orders,write_discounts"
+scopes = "read_markets,read_metaobject_definitions,read_metaobjects,read_orders,write_discounts,write_metaobject_definitions,write_metaobjects"
 
 [auth]
 redirect_urls = [
-  "https://connected-partner-sight-spelling.trycloudflare.com/auth/callback",
-  "https://connected-partner-sight-spelling.trycloudflare.com/auth/shopify/callback",
-  "https://connected-partner-sight-spelling.trycloudflare.com/api/auth/callback"
+  "https://tractor-era-johnston-rugby.trycloudflare.com/auth/callback",
+  "https://tractor-era-johnston-rugby.trycloudflare.com/auth/shopify/callback",
+  "https://tractor-era-johnston-rugby.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

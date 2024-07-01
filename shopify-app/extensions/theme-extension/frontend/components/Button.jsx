@@ -17,19 +17,18 @@ export default function Button(props) {
       });
       let json = await res.json();
       console.log("added attributes", json);
-      let res2 = await fetch('http://localhost:3000/api/discounts', {
+      let _hasDiscount = await fetch('http://localhost:3000/api/discounts', {
         method: 'POST',
         body: JSON.stringify({ walletAddress: account.address })
       });
-      let json2 = await res2.json()
-      console.log("json2", json2)
+      let hasDiscount  = await _hasDiscount.json()
 
       let res3 = await fetch(window.Shopify.routes.root + 'cart/update.js', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ attributes: { hasReferral: true } })
+        body: JSON.stringify({ attributes: hasDiscount?.data })
       })
       let json3 = await res3.json();
       console.log("json3", json3);
