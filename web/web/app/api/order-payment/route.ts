@@ -3,7 +3,7 @@ import { createPublicClient, http } from 'viem'
 import { localhost } from 'viem/chains'
 import { Web3AffiliateContractABI } from 'app/_contracts/Web3AffiliateContractABI';
 
-export const publicClient = createPublicClient({
+const publicClient = createPublicClient({
   chain: localhost,
   transport: http(),
 })

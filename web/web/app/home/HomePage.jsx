@@ -30,10 +30,12 @@ export default function HomePage() {
       args: [account.address]
     })
 
+  
 
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
+
+  async function submit(e) {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(e.target);
 
 
     let date = Math.floor(new Date().getTime() / 1000);
@@ -99,6 +101,7 @@ export default function HomePage() {
                 <button
                   type="submit"
                   className="rounded-full bg-white px-3 text-boat-color-blue-40 text-sm py-3"
+                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                   disabled={readData?.signupDate}
                 >
                   {readData?.signupDate ? "You're on the list!" : 'Claim offer'}

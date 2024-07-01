@@ -5,13 +5,13 @@ import { createPublicClient, http } from 'viem'
 import { localhost } from 'viem/chains'
 import '@shopify/shopify-api/adapters/node';
 
-export const publicClient = createPublicClient({
+const publicClient = createPublicClient({
   chain: localhost,
   transport: http(),
 })
 
 const shopify = shopifyApi({
-  apiSecretKey: process.env.SHOP_APP_API_SECRET,            // Note: this is the API Secret Key, NOT the API access token
+  apiSecretKey: process.env.SHOP_APP_API_SECRET || "",            // Note: this is the API Secret Key, NOT the API access token
   apiVersion: LATEST_API_VERSION,
   isCustomStoreApp: true,                        // this MUST be set to true (default is false)
   adminApiAccessToken: process.env.SHOP_ADMIN_API_TOKEN, // Note: this is the API access token, NOT the API Secret Key
@@ -35,6 +35,11 @@ export async function POST(req: Request): Promise<NextResponse> {
   })
 
   console.log({ hasReferral })
+
+  let gqlClient = new shopify.clients.Graphql({
+    session,
+    apiVersion: LATEST_API_VERSION
+  })
 
   if (hasReferral) {
     let createReferralMetaobject = await gqlClient.request(
@@ -62,13 +67,8 @@ export async function POST(req: Request): Promise<NextResponse> {
     console.log({createReferralMetaobject});
   }
 
-  let gqlClient = new shopify.clients.Graphql({
-    session,
-    apiVersion: LATEST_API_VERSION
-  })
-  let gqlResponse = {};
   try {
-    gqlResponse = await gqlClient.request(
+    let gqlResponse = await gqlClient.request(
       `{
           metaobjects(type: "onchain_accounts", first: 250) {
             edges {
@@ -86,7 +86,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     );
 
 
-    let referrals = gqlResponse.data?.metaobjects?.edges?.reduce((result, { node }) => {
+    let referrals = gqlResponse?.data?.metaobjects?.edges?.reduce((result: { [x: string]: boolean; }, { node }: any) => {
       result[node.address?.value] = Boolean(node.has_referral?.value || false);
       return result;
     }, {})
