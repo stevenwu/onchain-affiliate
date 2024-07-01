@@ -49,7 +49,7 @@ contract Web3AffiliateContract {
         require(msg.sender == 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);
 
         (bool sent,) = referrals[_customer].affiliate.call{value: payoutAmount}("");
-        console.log("affiliate: %s", referrals[_customer].affiliate]);
+        console.log("affiliate: %s", referrals[_customer].affiliate);
         require(sent, "Failed to pay affiliate");
     }
 }

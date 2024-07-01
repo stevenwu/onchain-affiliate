@@ -36,6 +36,32 @@ export async function POST(req: Request): Promise<NextResponse> {
 
   console.log({ hasReferral })
 
+  if (hasReferral) {
+    let createReferralMetaobject = await gqlClient.request(
+      `
+      mutation {
+      metaobjectUpsert(
+        handle: {type: "onchain_accounts", handle: "${data.walletAddress}"}
+        metaobject: {handle: "${data.walletAddress}", fields: [{key: "address", value: "${data.walletAddress}"}, {key: "has_referral", value: "${hasReferral}"}]}
+        ) {
+          metaobject {
+            handle
+            field(key: "address") {
+              value
+            }
+          }
+          userErrors {
+            field
+            message
+            code
+          }
+        }
+      }
+      `
+    )
+    console.log({createReferralMetaobject});
+  }
+
   let gqlClient = new shopify.clients.Graphql({
     session,
     apiVersion: LATEST_API_VERSION
@@ -44,7 +70,7 @@ export async function POST(req: Request): Promise<NextResponse> {
   try {
     gqlResponse = await gqlClient.request(
       `{
-          metaobjects(type: "onchain_accounts", first: 1) {
+          metaobjects(type: "onchain_accounts", first: 250) {
             edges {
               node {
                 address: field(key: "address") {
@@ -58,6 +84,17 @@ export async function POST(req: Request): Promise<NextResponse> {
           }
       }`,
     );
+
+
+    let referrals = gqlResponse.data?.metaobjects?.edges?.reduce((result, { node }) => {
+      result[node.address?.value] = Boolean(node.has_referral?.value || false);
+      return result;
+    }, {})
+
+    console.log("referrals", referrals)
+
+
+    console.log(JSON.stringify(gqlResponse));
   } catch (error) {
     if (error instanceof GraphqlQueryError) {
       console.log("gql errors: ", error.body?.errors.graphQLErrors);
@@ -71,7 +108,7 @@ export async function POST(req: Request): Promise<NextResponse> {
   // check metaobjects during checkout for value and apply discount
   // add attribute to cart to tag affiliate
 
-  return NextResponse.json({ message: JSON.stringify(hasReferral), data: gqlResponse }, { status: 200, headers: {
+  return NextResponse.json({ message: JSON.stringify(hasReferral), data: { hasReferral } }, { status: 200, headers: {
     'Access-Control-Allow-Origin': '*'
   } });
 }
