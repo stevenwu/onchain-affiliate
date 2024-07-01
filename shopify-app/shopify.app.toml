@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "dd5a00dc36347250804dd8b0406932d4"
+name = "order-paid-webhooks"
+handle = "order-paid-webhooks"
+application_url = "https://zero-programmer-san-elections.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "onchain-affiliate.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_markets,read_orders,read_metaobjects"
+
+[auth]
+redirect_urls = [
+  "https://zero-programmer-san-elections.trycloudflare.com/auth/callback",
+  "https://zero-programmer-san-elections.trycloudflare.com/auth/shopify/callback",
+  "https://zero-programmer-san-elections.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/paid" ]
+  uri = "/webhooks"
+
+[pos]
+embedded = false

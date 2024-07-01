@@ -1,0 +1,33 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "61edb1df378890727072fc8bec4664d3"
+name = "onchain-affiliate-v8"
+handle = "onchain-affiliate-v8"
+application_url = "https://connected-partner-sight-spelling.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "onchain-affiliate.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_markets,read_metaobjects,read_orders,write_discounts"
+
+[auth]
+redirect_urls = [
+  "https://connected-partner-sight-spelling.trycloudflare.com/auth/callback",
+  "https://connected-partner-sight-spelling.trycloudflare.com/auth/shopify/callback",
+  "https://connected-partner-sight-spelling.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "orders/paid" ]
+  uri = "/webhooks"
+
+[pos]
+embedded = false

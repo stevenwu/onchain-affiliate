@@ -1,0 +1,12 @@
+{
+  "frontend/entrypoints/smart-wallet.css": {
+    "file": "smart-wallet-a2c091d0.css",
+    "isEntry": true,
+    "src": "frontend/entrypoints/smart-wallet.css"
+  },
+  "frontend/entrypoints/smart-wallet.jsx": {
+    "file": "smart-wallet-67a37666.js",
+    "isEntry": true,
+    "src": "frontend/entrypoints/smart-wallet.jsx"
+  }
+}

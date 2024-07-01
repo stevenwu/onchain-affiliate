@@ -1,0 +1,15 @@
+{% liquid
+  render 'smart-wallet'
+
+  render 'vite-tag' with 'smart-wallet.css'
+  render 'vite-tag' with 'smart-wallet.jsx'
+-%}
+
+{% schema %}
+{
+  "name": "Smart Wallet",
+  "target": "section",
+  "settings": [
+  ]
+}
+{% endschema %}

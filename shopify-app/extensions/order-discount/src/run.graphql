@@ -1,0 +1,7 @@
+query RunInput {
+  cart {
+    has_referral:attribute(key: "hasReferral") {
+      value
+    }
+  }
+}
