@@ -19,7 +19,7 @@ export const useWeb3AffiliateContract = generateContractHook({
   },
   [baseSepolia.id]: {
     chain: baseSepolia,
-    address: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+    address: '0xf21b57Ad2041534Fa947cDE49C89C7C974f03058',
   },
   // ... more chains for this contract go here
 });
