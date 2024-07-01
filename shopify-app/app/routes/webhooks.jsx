@@ -2,7 +2,7 @@ import { authenticate } from "../shopify.server";
 import db from "../db.server";
 import { createWalletClient, createPublicClient, http } from 'viem'
 import { Web3AffiliateContractABI } from "./Web3AffiliateContractABI";
-import { localhost } from "viem/chains";
+import { baseSepolia, localhost } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 import { json } from "@remix-run/react";
 
@@ -14,12 +14,14 @@ console.log("contract addr", process.env.CONTRACT_ADDRESS);
 
 export const walletClient = createWalletClient({
   account: appWallet,
-  chain: localhost,
+  // chain: localhost,
+  chain: baseSepolia,
   transport: http(),
 });
 
 export const publicClient = createPublicClient({
-  chain: localhost,
+  // chain: localhost,
+  chain: baseSepolia,
   transport: http(),
 })
 

@@ -17,7 +17,8 @@ export default function Button(props) {
       });
       let json = await res.json();
       console.log("added attributes", json);
-      let _hasDiscount = await fetch('http://localhost:3000/api/discounts', {
+      // let _hasDiscount = await fetch('http://localhost:3000/api/discounts', {
+      let _hasDiscount = await fetch('https://onchain-affiliate-web.vercel.app/api/discounts', {
         method: 'POST',
         body: JSON.stringify({ walletAddress: account.address })
       });
