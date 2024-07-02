@@ -20,7 +20,7 @@ export default function HomePage() {
 
   let abi = w3a.abi;
 
-  let affiliateAddress = '0x2981cA79b738A657761e0D200Bb190DAE993d184';
+  let affiliateAddress = '0xb90CF0B4038EB2cfA405ce4D7810654517aFfEd5';
 
 
     const { isError: readError, data: readData, status: readStatus, error: readErrorMsg } = useReadContract({
