@@ -1,5 +1,4 @@
 import { createConfig, http } from 'wagmi';
-// import { base, baseSepolia } from 'wagmi/chains';
 import { base, baseSepolia, localhost } from 'wagmi/chains';
 import { coinbaseWallet, injected, metaMask, safe, walletConnect } from 'wagmi/connectors'
 

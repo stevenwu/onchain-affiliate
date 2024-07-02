@@ -2,11 +2,11 @@ import {shopifyApi, LATEST_API_VERSION, GraphqlQueryError} from '@shopify/shopif
 import { Web3AffiliateContractABI } from 'app/_contracts/Web3AffiliateContractABI';
 import { NextResponse } from 'next/server';
 import { createPublicClient, http } from 'viem'
-import { localhost } from 'viem/chains'
+import { baseSepolia, localhost } from 'viem/chains'
 import '@shopify/shopify-api/adapters/node';
 
 const publicClient = createPublicClient({
-  chain: localhost,
+  chain: baseSepolia,
   transport: http(),
 })
 
@@ -33,8 +33,6 @@ export async function POST(req: Request): Promise<NextResponse> {
     functionName: 'hasReferral',
     args: [data.walletAddress],
   })
-
-  console.log({ hasReferral })
 
   let gqlClient = new shopify.clients.Graphql({
     session,

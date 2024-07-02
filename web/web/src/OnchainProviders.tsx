@@ -11,7 +11,7 @@ type Props = { children: ReactNode };
 
 const queryClient = new QueryClient();
 
-const rpcUrl = '/api/rpc';
+const rpcUrl = 'https://sepolia.base.org/api/rpc';
 
 const wagmiConfig = createWagmiConfig(rpcUrl);
 
@@ -19,7 +19,7 @@ function OnchainProviders({ children }: Props) {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <OnchainKitProvider chain={localhost}>{children}</OnchainKitProvider>
+        <OnchainKitProvider chain={baseSepolia}>{children}</OnchainKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
   );
