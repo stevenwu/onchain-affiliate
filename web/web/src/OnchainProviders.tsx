@@ -11,7 +11,7 @@ type Props = { children: ReactNode };
 
 const queryClient = new QueryClient();
 
-const rpcUrl = 'https://sepolia.base.org/api/rpc';
+const rpcUrl = 'https://sepolia.base.org';
 
 const wagmiConfig = createWagmiConfig(rpcUrl);
 
