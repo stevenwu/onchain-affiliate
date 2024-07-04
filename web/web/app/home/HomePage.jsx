@@ -7,7 +7,7 @@ import AccountConnect from '@/components/layout/header/AccountConnect';
 import Header from '@/components/layout/header/Header';
 import React from 'react';
 
-export const ca = '0xf21b57Ad2041534Fa947cDE49C89C7C974f03058';
+export const ca = '0xfa44D585f6028815060E900947eC71e50A7e0Ea8';
 
 /**
  * Use the page component to wrap the components

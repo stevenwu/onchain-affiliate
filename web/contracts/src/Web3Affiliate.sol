@@ -46,7 +46,7 @@ contract Web3AffiliateContract {
 
     function payAffiliate(address _customer) public {
         console.log("payAffiliate sender: %s", msg.sender);
-        require(msg.sender == 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266);
+        require(msg.sender == 0xb90CF0B4038EB2cfA405ce4D7810654517aFfEd5);
 
         (bool sent,) = referrals[_customer].affiliate.call{value: payoutAmount}("");
         console.log("affiliate: %s", referrals[_customer].affiliate);

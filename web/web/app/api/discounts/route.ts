@@ -28,7 +28,7 @@ export async function POST(req: Request): Promise<NextResponse> {
   const data = await req.json()
 
   const hasReferral = await publicClient.readContract({
-    address: '0xf21b57Ad2041534Fa947cDE49C89C7C974f03058',
+    address: '0xfa44D585f6028815060E900947eC71e50A7e0Ea8',
     abi: Web3AffiliateContractABI,
     functionName: 'hasReferral',
     args: [data.walletAddress],
