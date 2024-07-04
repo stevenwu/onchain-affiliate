@@ -45,18 +45,20 @@ export const action = async ({ request }) => {
         return result;
       }, {});
 
-      console.log(JSON.stringify(cartAttrs));
-      
-      const payAffiliate = await walletClient.writeContract({
-        address: process.env.CONTRACT_ADDRESS,
-        abi: Web3AffiliateContractABI,
-        functionName: 'payAffiliate',
-        args: [cartAttrs.walletAddress],
-      });
+      try {
+        const txHash = await walletClient.writeContract({
+          address: process.env.CONTRACT_ADDRESS,
+          abi: Web3AffiliateContractABI,
+          functionName: 'payAffiliate',
+          args: [cartAttrs.walletAddress],
+        });
 
-      console.log("order paid:", payload);
-      console.log("payAffiliate:", payAffiliate);
-      return json({ message: 'Affiliate paid.' }, 200);
+
+        return json({ message: `Affiliate paid. ${txHash}` }, 200);
+      } catch (err) {
+        console.error("Error paying affiliate: ", err.message);
+        return json({ message: "Error processing affiliate payment."}, 200);
+      }
     case "APP_UNINSTALLED":
       if (session) {
         await db.session.deleteMany({ where: { shop } });
