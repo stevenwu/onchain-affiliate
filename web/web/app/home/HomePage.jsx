@@ -121,6 +121,14 @@ export default function HomePage() {
             <h1>My Referrals</h1>
             {JSON.stringify(readData)}
           </div>
+
+          <div className="mt-16">
+            <h2 className="text-center text-5xl mb-4">How It Works</h2>
+            <div style={{position: 'relative', paddingBottom: '58.91980360065466%', height: 0}}><iframe src="https://www.loom.com/embed/53d2a424bb05435aa6903f0d5c8284eb?sid=67a1bb0d-5017-4544-8d2f-8a50f38739dd" frameBorder={0} webkitallowfullscreen="true" mozallowfullscreen="true" allowFullScreen={true} style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}></iframe></div>
+
+            <a href="https://onchain-affiliate.myshopify.com">Demo Store</a>
+            <p>Use password: cheeyo</p>
+          </div>
         </div>
       </main>
       <Footer />
