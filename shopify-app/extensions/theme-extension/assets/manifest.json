@@ -1,11 +1,37 @@
 {
+  "_hooks.module-50e7c3b4.js": {
+    "file": "hooks.module-50e7c3b4.js",
+    "imports": [
+      "frontend/entrypoints/smart-wallet.jsx"
+    ]
+  },
+  "_index-784bb65a.js": {
+    "file": "index-784bb65a.js",
+    "imports": [
+      "frontend/entrypoints/smart-wallet.jsx",
+      "_hooks.module-50e7c3b4.js"
+    ],
+    "isDynamicEntry": true
+  },
+  "_index-c8f5b28d.js": {
+    "file": "index-c8f5b28d.js",
+    "imports": [
+      "frontend/entrypoints/smart-wallet.jsx",
+      "_hooks.module-50e7c3b4.js"
+    ],
+    "isDynamicEntry": true
+  },
   "frontend/entrypoints/smart-wallet.css": {
     "file": "smart-wallet-a2c091d0.css",
     "isEntry": true,
     "src": "frontend/entrypoints/smart-wallet.css"
   },
   "frontend/entrypoints/smart-wallet.jsx": {
-    "file": "smart-wallet-67a37666.js",
+    "dynamicImports": [
+      "_index-c8f5b28d.js",
+      "_index-784bb65a.js"
+    ],
+    "file": "smart-wallet-761c5e46.js",
     "isEntry": true,
     "src": "frontend/entrypoints/smart-wallet.jsx"
   }

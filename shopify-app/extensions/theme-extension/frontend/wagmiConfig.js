@@ -16,7 +16,7 @@ export function createWagmiConfig(rpcUrl, projectId) {
   const localhostUrl = 'http://127.0.0.1:8545'
 
   return createConfig({
-    chains: [localhost,base,baseSepolia],
+    chains: [baseSepolia,base,localhost],
     connectors: [
       injected(),
       coinbaseWallet({
